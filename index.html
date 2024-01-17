@@ -7,9 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Tour Mapper</title>
 
-  
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+  crossorigin="anonymous">
   <link rel="stylesheet" href="styles.css">
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -28,11 +29,16 @@
 
 <body>
 
-<div class="container">
-    <div class="row">
-      <div class="col-md-12 jumbotron text-center">
-        <h1>Tour Mapping/Path Finder</h1>
-        <p>Use the drop-downs and interactive mab below to locate venues and available tickets for your favorite bands! You can even chart the best route for you to take to follow your favorite bands on tour! \m/ \m/</p>
+  <div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 text-body-emphasis">Tour Mapping/Path Finder <br> How would you like to browse?</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Use the filer options and interactive mab below to locate venues and available tickets for your favorite bands! You can even chart the best route for you to take to follow your favorite bands on tour! \m/ \m/</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Individual Shows</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Tour Route</button>
+      </div>
+    </div>
+  </div>
    <!-- The div that holds map -->
    <div id="map"></div>
    
