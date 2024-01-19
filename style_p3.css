@@ -1,0 +1,15 @@
+#map { height: 600px;}
+
+.btn-primary {
+    background-color: #a01e74;
+    border-color: #050505;
+    }
+.btn-outline-secondary{
+    background-color: #050505;
+    border-color: #a01e74;
+    color: #fff;
+}
+.panel-primary {
+    width: 940px;
+    height: 40px;
+}

@@ -26,7 +26,9 @@ crossorigin=""></script>
 </head>
 
 <body>
+
   <div class="container">
+
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
         <h1>Tour Mapping</h1>
@@ -38,33 +40,58 @@ crossorigin=""></script>
           <button type="button" class="btn btn-outline-secondary btn-lg px-4">Tour Route</button>
         </div>
     </div>
+    </div>
+
+
     <div class="row">
+
       <div class="col-md-2">
         <div class="well">
         
-<!-- Populate with states -->        
+        <!-- Populate with states -->        
           <h5>Starting State:</h5>
           <select id="selDataset" onchange="optionChanged(this.value)"></select>
         </div>
-        
-<!-- I want to change the color of this -->        
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Your Shows:</h3>
-          </div>
-          
-   <!-- The div that holds map -->
-   <div id="map"></div>
-   
+        <!-- I want to change the color of this -->        
+      </div>
+    </div>
 
-   <!-- Our JavaScript -->
-   <script type="text/javascript" src="static/js/logic_p3.js"></script>
+          
+      <!--<div class="container">-->
+  <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+            <!---<div class="row">-->
+             
+          <div class="container">
+
+            <div class="col.col-md-6">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title text-center">Your Shows:</h3>
+                      </div>
+                      </div>
+              
+                </div>
+                <div id="map"></div>
+            </div>
+            
+
+
+          <!-- The div that holds map -->
+
+          
+
+          <!-- Our JavaScript -->
+          <script type="text/javascript" src="static/js/logic_p3.js"></script>
    
           </div>
         </div>
       </div>
 
+    </div>
 
+  </div>
+
+  
 </body>
 
 </html>
