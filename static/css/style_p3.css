@@ -1,4 +1,7 @@
-#map { height: 600px;}
+#map { 
+    width: device-width;
+    height: 600px;
+}
 
 .btn-primary {
     background-color: #a01e74;
