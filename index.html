@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,12 +16,6 @@
 
   <!-- Our CSS -->
   <link rel="stylesheet" type="text/css" href="static/css/style_p3.css">
-
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-crossorigin=""></script>
-
 </head>
 
 <body>
@@ -32,39 +25,35 @@ crossorigin=""></script>
         <h1>Tour Mapping</h1>
         <p class="lead mb-4">Use the filter options and interactive map below to locate venues and available tickets for your favorite bands! You can even chart the best route for you to take to follow your favorite bands on tour! \m/ \m/</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          
-<!-- ADD "onClick=" to buttons -->          
           <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Individual Shows</button>          
           <button type="button" class="btn btn-outline-secondary btn-lg px-4">Tour Route</button>
         </div>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-2">
         <div class="well">
-        
-<!-- Populate with states -->        
-          <h5>Starting State:</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
-        </div>
-        
-<!-- I want to change the color of this -->        
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Your Shows:</h3>
-          </div>
-          
-   <!-- The div that holds map -->
-   <div id="map"></div>
-   
-
-   <!-- Our JavaScript -->
-   <script type="text/javascript" src="static/js/logic_p3.js"></script>
-   
-          </div>
+          <h5>Filter by Band:</h5>
+          <input type="text" id="band-name" class="form-control" placeholder="Enter band name">
+          <h5>Year Range:</h5>
+          <input type="text" id="year-range" class="form-control" placeholder="YYYY-YYYY">
+          <h5>Tour Name:</h5>
+          <input type="text" id="tour-name" class="form-control" placeholder="Enter tour name">
+          <button id="fetch-data" class="btn btn-primary btn-block mt-3">Show Tours</button>
         </div>
       </div>
+      <div class="col-md-10">
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
 
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""></script>
 
+  <!-- Our JavaScript -->
+  <script type="text/javascript" src="static/js/logic_p3.js"></script>
 </body>
-
 </html>
