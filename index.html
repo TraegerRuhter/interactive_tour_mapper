@@ -11,15 +11,14 @@
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-  crossorigin=""/>
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 
-  <!-- Our CSS -->
+  <!-- Custom CSS -->
   <link rel="stylesheet" type="text/css" href="static/css/style_p3.css">
 </head>
-
 <body>
   <div class="container">
+<<<<<<< Updated upstream
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
         <h1>Tour Mapping</h1>
@@ -54,6 +53,35 @@
   crossorigin=""></script>
 
   <!-- Our JavaScript -->
+=======
+    <div class="panel-primary" id="sidePanel">
+      <div class="col-md-12 jumbotron text-center">
+        <h1>Tour Mapping</h1>
+        <p class="lead mb-4">Use the filter options and interactive map below to locate venues and available tickets for your favorite bands! You can even chart the best route for you to take to follow your favorite bands on tour! \m/ \m/</p>
+        <form onsubmit="searchArtist(); return false;">
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Individual Shows</button>          
+            <button type="button" class="btn btn-outline-secondary btn-lg px-4">Tour Route</button>
+
+            <label for="artistInput">Enter Artist Name:</label>
+            <input type="text" id="artistInput" placeholder="Enter artist name">
+            <button type="submit">Search</button>
+          </div>
+        </form>
+      </div>
+      <button class="btn-primary" id="collapsePanel">Collapse Panel</button>
+    </div>
+
+    <!-- Expand Panel button outside and next to the panel -->
+    <button class="btn-primary" id="expandPanel" style="display: none;">Expand Panel</button>
+
+    <div id="map">
+      <!-- Map content goes here -->
+    </div>
+  </div>
+
+  <!-- Custom JavaScript -->
+>>>>>>> Stashed changes
   <script type="text/javascript" src="static/js/logic_p3.js"></script>
 </body>
 </html>
