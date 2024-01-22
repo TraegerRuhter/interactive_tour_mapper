@@ -8,16 +8,21 @@ async function getArtistEvents(apiKey, artistName) {
   return Array.isArray(json_data.events) ? json_data.events : [json_data.events];
 }
 
-function createMap(eventsJson) {
-  if (!myMap) {
-    var mapCenter = [32.8283, -98.5795];
-    myMap = L.map('map').setView(mapCenter, 4);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(myMap);
+function createMap() {
+  if (myMap) {
+    myMap.off();
+    myMap.remove();
   }
 
+  var mapCenter = [32.8283, -98.5795];
+  myMap = L.map('map').setView(mapCenter, 4);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(myMap);
+}
+
+function addMarkersAndPolyline(eventsJson) {
   clearMap(); // Clear existing markers and lines
 
   markers = []; // Reset markers array
@@ -50,8 +55,13 @@ function searchArtist() {
   const newArtistName = artistInput.value;
 
   const apiKey = "bdf2d4f5-f2b8-4dba-91bf-0c2c5d8fadf3";
+
+  // Clear existing map and create a new map
+  createMap();
+
+  // Fetch and add markers for the new artist
   getArtistEvents(apiKey, newArtistName)
-    .then(createMap)
+    .then(addMarkersAndPolyline)
     .catch(error => console.error(error));
 }
 
@@ -64,3 +74,11 @@ function clearMap() {
     });
   }
 }
+
+// Initialize the map when the page is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  createMap();
+});
+
+
+
