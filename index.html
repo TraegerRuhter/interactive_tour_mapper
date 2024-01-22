@@ -24,16 +24,16 @@
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
 </head>
 
 <body>
-
+  
+  <!-- notification of failed search -->
   <div id="noEventsMessage" class="noEventsMessage">
     Sorry, No Events For This Artist
   </div>
 
-
+  <!-- Header container -->
   <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
@@ -42,22 +42,7 @@
           your favorite bands! You can even chart the best route for you to take to follow your favorite bands on tour!
         </p>
       </div>
-
-
     </div>
-
-    <div class="row">
-      <div class="search-controls d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <input type="text" id="artistInput" class="artist-input" placeholder="Enter artist name">
-        <button class="search-btn" onclick="searchArtist()">Search</button>
-        <button class="reset-btn" onclick="clearMap()">Reset</button>
-      </div>
-    </div>
-
-    <div id="tourDatesInfo" class="tourDatesInfo">
-      <span id="artistNameDisplay"></span>
-    </div>
-
     <!-- <div class="row">
       <div class="col-md-2">
         <div class="well"> -->
@@ -69,21 +54,27 @@
     <!-- </div>
     </div> -->
 
-
     <!--<div class="container">-->
     <!-- Stack the columns on mobile by making one full-width and the other half-width -->
     <!---<div class="row">-->
-
-    <div class="container">
-      <!-- <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h3 class="panel-title text-center">Your Shows:</h3>
-                      </div>
-                      </div> -->
-
-    </div>
-    <div id="map"></div>
   </div>
+
+  <!-- Search bar -->
+  <div class="row">
+    <div class="search-controls d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <input type="text" id="artistInput" class="artist-input" placeholder="Enter artist name">
+      <button class="search-btn" onclick="searchArtist()">Search</button>
+      <button class="reset-btn" onclick="clearMap()">Reset</button>
+    </div>
+  </div>
+
+  <!-- Artist Selected Display -->
+  <div id="tourDatesInfo" class="tourDatesInfo">
+    <span id="artistNameDisplay"></span>
+  </div>
+
+  <!-- Map -->
+  <div id="map"></div>
 
   <!-- Table of tour dates -->
   <div class="row">

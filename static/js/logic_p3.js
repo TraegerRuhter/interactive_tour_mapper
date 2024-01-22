@@ -120,9 +120,10 @@ function addMarkersAndPolyline(eventsJson) {
             const performanceDate = event.performer[0]['x-performanceDate'];
 
             // Add a popup to the marker
-            var popupContent = '<div style="font-size: 16px;">' + // Change font size as needed
+            var popupContent = '<div id="popups">' + 
                 'Band: ' + name + '<br>' +
                 'Venue: ' + place.name + '<br>' +
+                'City: ' + city + '<br>' +
                 'Date: ' + performanceDate +
                 '</div>';
             marker.bindPopup(popupContent).addTo(myMap);

@@ -57,6 +57,7 @@ body {
     width: 70%;
     max-width: 1000px;
     margin: 5px auto;
+    margin-bottom: 20px;
     background-color: #050505;
     color: #ffffff;
     font-family: 'BioRhyme';
@@ -81,8 +82,6 @@ body {
     background-color: #4d4c4c;
 }
 
-
-
 /* Slide down animation for the failed search */
 @keyframes slideUpDown {
     0% {
@@ -92,7 +91,7 @@ body {
 
     10%,
     90% {
-        top: 50px;
+        top: 300px;
         opacity: 1;
     }
 
@@ -106,10 +105,12 @@ body {
     display: none;
     position: absolute;
     color: white;
+    font-family: 'BioRhyme';
+    font-size: 20px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
-    background-color: rgb(104, 30, 98);
+    background-color: #a01e74;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -131,7 +132,10 @@ body {
 }
 
 .artist-input {
-    padding: 5px 50px;
+    padding: 3px 50px;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
     text-align: center;
     margin-right: 3px;
     border: 2px solid #a01e74;
@@ -164,4 +168,10 @@ body {
 
 .reset-btn:hover {
     background-color: #275968;
+}
+
+#popups {
+    font-size: 160%;
+    font-family: 'BioRhyme';
+    text-size-adjust: 100%;
 }
