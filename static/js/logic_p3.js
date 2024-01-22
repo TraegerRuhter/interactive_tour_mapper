@@ -1,6 +1,9 @@
 var myMap;
 var markers = [];
+var polyline;
 
+
+// pull data from the API
 async function getArtistEvents(apiKey, artistName) {
     const apiUrl = `https://www.jambase.com/jb-api/v1/events?apikey=${apiKey}&artistName=${artistName}`;
     const response = await fetch(apiUrl);
@@ -14,6 +17,30 @@ async function getArtistEvents(apiKey, artistName) {
 
     return filteredEvents;
 }
+
+// Create a map and add a tile layer
+function createMap() {
+    // Remove the existing map instance if it exists
+    if (myMap) {
+        myMap.off();
+        myMap.remove();
+    }
+
+    // Create a new map instance and center it on the USA
+    myMap = L.map('map').setView([39.8283, -98.5795], 4);
+
+    // Add a tile layer to the map
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '© OpenStreetMap contributors, © CARTO'
+    }).addTo(myMap);
+}
+
+// Initialize the map when the page is loaded
+document.addEventListener('DOMContentLoaded', function () {
+    createMap();
+});
+
+// Search for an artist when the button is clicked
 function searchArtist() {
     const artistInput = document.getElementById('artistInput');
     const newArtistName = artistInput.value.trim();
@@ -45,6 +72,14 @@ function searchArtist() {
         });
 }
 
+// Search for an artist when the enter key is pressed
+document.getElementById('artistInput').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        searchArtist();
+    }
+});
+
+// update the tour dates info div with the artist name
 function updateTourDatesInfo(newArtistName) {
     var tourDatesInfoDiv = document.getElementById('tourDatesInfo');
     var artistNameDisplay = document.getElementById('artistNameDisplay');
@@ -52,29 +87,13 @@ function updateTourDatesInfo(newArtistName) {
     tourDatesInfoDiv.style.display = 'block';
 }
 
+// hide the tour dates info div
 function hideTourDatesInfo() {
     var tourDatesInfoDiv = document.getElementById('tourDatesInfo');
     tourDatesInfoDiv.style.display = 'none';
 }
 
-
-
-function createMap() {
-    if (myMap) {
-        myMap.off();
-        myMap.remove();
-    }
-
-    // Coordinates for the center of Oregon
-    var oregonCenter = [44.0, -120.5];
-    myMap = L.map('map').setView(oregonCenter, 7);
-
-    // add tile layer
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '© OpenStreetMap contributors, © CARTO'
-    }).addTo(myMap);
-}
-
+// Add markers and a polyline to the map
 function addMarkersAndPolyline(eventsJson) {
     return new Promise(resolve => {
         clearMapforSearch(); // Clear existing markers and lines
@@ -152,6 +171,7 @@ function clearMap() {
     tourDatesInfoDiv.style.display = 'none';
 }
 
+// Clear the map and the table but not the artist div
 function clearMapforSearch() {
     if (myMap) {
         myMap.eachLayer(layer => {
@@ -170,17 +190,10 @@ function clearMapforSearch() {
     artistInput.value = '';
 }
 
-
+// Show the no events message
 function showNoEventsMessage() {
     clearMap(); // Clear the map and the table
     // Display the no events message
     var messageDiv = document.getElementById('noEventsMessage');
     messageDiv.style.display = 'block';
 }
-
-
-
-// Initialize the map when the page is loaded
-document.addEventListener('DOMContentLoaded', function () {
-    createMap();
-});

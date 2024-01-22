@@ -92,7 +92,6 @@ body {
 
     10%,
     90% {
-        /* Adjust percentages for timing */
         top: 50px;
         opacity: 1;
     }
@@ -114,17 +113,13 @@ body {
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
-    /* Add animation properties */
     animation-name: slideUpDown;
     animation-duration: 3s;
-    /* Total duration including pause */
     animation-fill-mode: forwards;
 }
 
 
 /* search bar and button styling */
-
 .search-controls {
     text-align: center;
     margin: 5px auto;
