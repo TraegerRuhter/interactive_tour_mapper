@@ -62,7 +62,7 @@ body {
     background-color: #050505;
     color: #ffffff;
     font-family: 'BioRhyme';
-    font-size: 15px;
+    font-size: clamp(12px, 2vw, 15px);
     border: 5px solid #a01e74;
 }
 
@@ -70,7 +70,7 @@ body {
     background-color: #a01e74;
     color: #ffffff;
     font-family: 'Bungee Shade';
-    font-size: 25px;
+    font-size: clamp(12px, 3vw, 25px);
     padding: 5px;
     border: 1px solid #ffffff;
 }
@@ -130,12 +130,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: clamp(12px, 2vw, 18px);
+    font-family: 'BioRhyme';
 }
 
 .artist-input {
-    padding: 3px 50px;
+    padding: 3px 30px;
     color: black;
-    font-size: 18px;
+
     font-weight: bold;
     text-align: center;
     margin-right: 3px;
