@@ -151,13 +151,7 @@ function addMarkersAndPolyline(eventsJson) {
 
 
 function clearMap() {
-    if (myMap) {
-        myMap.eachLayer(layer => {
-            if (layer instanceof L.Marker || layer instanceof L.Polyline) {
-                layer.remove();
-            }
-        });
-    }
+    createMap(); // Initialize the map
 
     // Clear the table
     const tableBody = document.getElementById('tourDatesTable').getElementsByTagName('tbody')[0];

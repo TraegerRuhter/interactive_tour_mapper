@@ -1,13 +1,15 @@
 body {
     background-color: #050505;
-    width: device-width;
+    width: 95%;
+    margin: 0 auto; 
 }
 
+
 .jumbotron {
-    padding: 10px;
+    padding: 2px;
+    height: 200px auto;
     color: white;
     background-image: url(../image/concert.jpg);
-    margin: auto 5px;
     background-position: center;
     background-size: cover;
 }
@@ -29,8 +31,7 @@ body {
 
 #tourDatesInfo {
     display: none;
-    text-transform: initial;
-    width: 80%;
+    width: 79%;
     max-width: 1000px;
     margin: 5px auto;
     font-family: 'BioRhyme';
@@ -44,8 +45,8 @@ body {
 
 
 #map {
-    width: 90%;
-    max-width: 1200px;
+    width: 80%;
+    max-width: 1000px;
     height: 600px;
     background-color: #050505;
     margin: 5px auto;
