@@ -27,6 +27,22 @@ body {
     font-size: 150%;
 }
 
+#tourDatesInfo {
+    display: none;
+    text-transform: initial;
+    width: 80%;
+    max-width: 1000px;
+    margin: 5px auto;
+    font-family: 'BioRhyme';
+    background-color: #a01e74;
+    text-align: center;
+    font-size: 30px;
+    color: #ffffff;
+    border-radius: 5px;
+
+}
+
+
 #map {
     width: 90%;
     max-width: 1200px;
@@ -38,7 +54,7 @@ body {
 }
 
 #tourDatesTable {
-    width: 80%;
+    width: 70%;
     max-width: 1000px;
     margin: 5px auto;
     background-color: #050505;

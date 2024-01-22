@@ -14,6 +14,50 @@ async function getArtistEvents(apiKey, artistName) {
 
     return filteredEvents;
 }
+function searchArtist() {
+    const artistInput = document.getElementById('artistInput');
+    const newArtistName = artistInput.value.trim();
+    const apiKey = "bdf2d4f5-f2b8-4dba-91bf-0c2c5d8fadf3";
+
+    createMap(); // Initialize the map
+
+    getArtistEvents(apiKey, newArtistName)
+        .then(eventsJson => {
+            if (eventsJson.length === 0) {
+                showNoEventsMessage(); // Shows the message for 2 seconds
+                hideTourDatesInfo(); // Hide the tour dates info div
+            } else {
+                updateTourDatesInfo(newArtistName); // Update and show the tour dates info div
+                // Handle adding markers and polyline
+                addMarkersAndPolyline(eventsJson).then(() => {
+                    // Adjust the map view
+                    if (markers.length > 0) {
+                        var usaCenter = [39.8283, -98.5795];
+                        myMap.setView(usaCenter, 4);
+                    }
+                });
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            showNoEventsMessage(); // Optionally show message on error as well
+            hideTourDatesInfo(); // Hide the tour dates info div
+        });
+}
+
+function updateTourDatesInfo(newArtistName) {
+    var tourDatesInfoDiv = document.getElementById('tourDatesInfo');
+    var artistNameDisplay = document.getElementById('artistNameDisplay');
+    artistNameDisplay.textContent = newArtistName;
+    tourDatesInfoDiv.style.display = 'block';
+}
+
+function hideTourDatesInfo() {
+    var tourDatesInfoDiv = document.getElementById('tourDatesInfo');
+    tourDatesInfoDiv.style.display = 'none';
+}
+
+
 
 function createMap() {
     if (myMap) {
@@ -33,7 +77,7 @@ function createMap() {
 
 function addMarkersAndPolyline(eventsJson) {
     return new Promise(resolve => {
-        clearMap(); // Clear existing markers and lines
+        clearMapforSearch(); // Clear existing markers and lines
         markers = []; // Reset markers array
 
         const tableBody = document.getElementById('tourDatesTable').getElementsByTagName('tbody')[0];
@@ -55,7 +99,7 @@ function addMarkersAndPolyline(eventsJson) {
 
             const name = event.performer[0].name;
             const performanceDate = event.performer[0]['x-performanceDate'];
-            
+
             // Add a popup to the marker
             var popupContent = '<div style="font-size: 16px;">' + // Change font size as needed
                 'Band: ' + name + '<br>' +
@@ -85,35 +129,6 @@ function addMarkersAndPolyline(eventsJson) {
     });
 }
 
-function searchArtist() {
-    const artistInput = document.getElementById('artistInput');
-    const newArtistName = artistInput.value.trim();
-    const apiKey = "bdf2d4f5-f2b8-4dba-91bf-0c2c5d8fadf3";
-
-    createMap(); // Initialize the map
-
-    getArtistEvents(apiKey, newArtistName)
-        .then(eventsJson => {
-            if (eventsJson.length === 0) {
-                showNoEventsMessage(); // This should show the message for 2 seconds
-            } else {
-                // Handle adding markers and polyline
-                addMarkersAndPolyline(eventsJson).then(() => {
-                    // Adjust the map view
-                    if (markers.length > 0) {
-                        var usaCenter = [39.8283, -98.5795];
-                        myMap.setView(usaCenter, 4);
-                    }
-                });
-            }
-        })
-        .catch(error => {
-            console.error(error);
-            showNoEventsMessage(); // Optionally show message on error as well
-        });
-}
-
-
 
 function clearMap() {
     if (myMap) {
@@ -123,13 +138,47 @@ function clearMap() {
             }
         });
     }
+
+    // Clear the table
+    const tableBody = document.getElementById('tourDatesTable').getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = '';
+
+    // Reset the artist input field
+    var artistInput = document.getElementById('artistInput');
+    artistInput.value = '';
+
+    // Hide the tourDatesInfo div
+    var tourDatesInfoDiv = document.getElementById('tourDatesInfo');
+    tourDatesInfoDiv.style.display = 'none';
 }
 
+function clearMapforSearch() {
+    if (myMap) {
+        myMap.eachLayer(layer => {
+            if (layer instanceof L.Marker || layer instanceof L.Polyline) {
+                layer.remove();
+            }
+        });
+    }
+
+    // Clear the table
+    const tableBody = document.getElementById('tourDatesTable').getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = '';
+
+    // Reset the artist input field
+    var artistInput = document.getElementById('artistInput');
+    artistInput.value = '';
+}
+
+
 function showNoEventsMessage() {
+    clearMap(); // Clear the map and the table
+    // Display the no events message
     var messageDiv = document.getElementById('noEventsMessage');
     messageDiv.style.display = 'block';
-  }
-  
+}
+
+
 
 // Initialize the map when the page is loaded
 document.addEventListener('DOMContentLoaded', function () {
