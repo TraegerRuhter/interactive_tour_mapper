@@ -9,18 +9,21 @@ async function getArtistEvents(apiKey, artistName) {
 }
 
 function createMap() {
-  if (myMap) {
-    myMap.off();
-    myMap.remove();
+    if (myMap) {
+      myMap.off();
+      myMap.remove();
+    }
+  
+    // Coordinates for the center of Oregon
+    var oregonCenter = [44.0, -120.5];
+    myMap = L.map('map').setView(oregonCenter, 7);
+  
+    // Use CartoDB Dark Tiles
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '© OpenStreetMap contributors, © CARTO'
+    }).addTo(myMap);
   }
-
-  var mapCenter = [32.8283, -98.5795];
-  myMap = L.map('map').setView(mapCenter, 4);
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(myMap);
-}
+  
 
 function addMarkersAndPolyline(eventsJson) {
   clearMap(); // Clear existing markers and lines
