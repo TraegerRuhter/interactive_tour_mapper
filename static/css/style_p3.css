@@ -1,4 +1,8 @@
+body {
+    background-color: #050505;
+}
 .jumbotron {
+    padding: 10px;
     color: white;
     background-image: url(../image/concert.jpg);
     background-position: center;
@@ -6,22 +10,18 @@
 }
 .jumbotron h1 {
     position:relative;
-    top: -48px;
-    font-family: 'Bungee Shade';
-    
+    top: -30px;
+    font-family: 'Bungee Shade';   
 }
-
 .jumbotron p {
     position:relative;
     top: 40px;
     font-family: 'BioRhyme';
 }
-
 #map { 
     width: device-width;
     height: 600px;
 }
-
 .btn-primary {
     background-color: #a01e74;
     border-color: #050505;
