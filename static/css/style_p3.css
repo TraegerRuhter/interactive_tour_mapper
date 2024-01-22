@@ -15,8 +15,9 @@ body {
 }
 .jumbotron p {
     position:relative;
-    top: 40px;
+    top: 30px;
     font-family: 'BioRhyme';
+    font-size: 18px;
 }
 #map { 
     width: device-width;
