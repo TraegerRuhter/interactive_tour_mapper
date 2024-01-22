@@ -1,5 +1,6 @@
 body {
     background-color: #050505;
+    width: device-width;
 }
 .jumbotron {
     padding: 10px;
@@ -20,9 +21,43 @@ body {
     font-size: 18px;
 }
 #map { 
-    width: device-width;
+    width: 99%;
     height: 600px;
+    background-color: #050505;
+    margin: 5px auto;
+    border: 5px solid #a01e74;
+    border-radius: 10px;
 }
+
+#tourDatesTable {
+    width: 70%;
+    max-width: 1000px;
+    margin: 5px auto;
+    background-color: #050505;
+    color: #ffffff;
+    font-family: 'BioRhyme';
+    font-size: 15px;
+    border: 5px solid #a01e74;
+  }
+
+    #tourDatesTable th {
+        background-color: #a01e74;
+        color: #ffffff;
+        font-family: 'Bungee Shade';
+        font-size: 25px;
+        padding: 5px;
+        border: 1px solid #ffffff;
+    }
+  #tourDatesTable tr:nth-child(odd) {
+    background-color: #000000;
+  }
+
+  #tourDatesTable tr:nth-child(even) {
+    background-color: #4d4c4c;
+  }
+
+
+  
 /*.btn-primary {
     background-color: #a01e74;
     border-color: #050505;
