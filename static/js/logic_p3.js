@@ -44,23 +44,35 @@ function addMarkersAndPolyline(eventsJson) {
             const latitude = place.geo.latitude;
             const longitude = place.geo.longitude;
 
+
+            const city = event.location.address.addressLocality ? event.location.address.addressLocality : "Not Available";
+            const state = event.location.address.addressRegion.alternateName ? event.location.address.addressRegion.alternateName : "Not Available";
+            const country = event.location.address.addressCountry.alternateName ? event.location.address.addressCountry.alternateName : "Not Available";
+
+
             const marker = L.marker([latitude, longitude]);
             markers.push(marker);
 
             const name = event.performer[0].name;
             const performanceDate = event.performer[0]['x-performanceDate'];
-            const eventType = event['@type'];
-
-            var popupContent = 'Band: ' + name + ' Type: ' + eventType + ' Date: ' + performanceDate;
+            
+            // Add a popup to the marker
+            var popupContent = '<div style="font-size: 16px;">' + // Change font size as needed
+                'Band: ' + name + '<br>' +
+                'Venue: ' + place.name + '<br>' +
+                'Date: ' + performanceDate +
+                '</div>';
             marker.bindPopup(popupContent).addTo(myMap);
+
+
 
             // Add a new row to the table for each event
             let row = tableBody.insertRow();
             row.insertCell(0).innerText = performanceDate; // Date
             row.insertCell(1).innerText = place.name; // Venue
-            row.insertCell(2).innerText = place.city; // City
-            row.insertCell(3).innerText = place.state; // State
-            row.insertCell(4).innerText = place.country; // Country
+            row.insertCell(2).innerText = city; // City
+            row.insertCell(3).innerText = state; // State
+            row.insertCell(4).innerText = country; // Country
         }
 
         // Create a polyline connecting markers
@@ -75,22 +87,33 @@ function addMarkersAndPolyline(eventsJson) {
 
 function searchArtist() {
     const artistInput = document.getElementById('artistInput');
-    const newArtistName = artistInput.value;
+    const newArtistName = artistInput.value.trim();
     const apiKey = "bdf2d4f5-f2b8-4dba-91bf-0c2c5d8fadf3";
 
-    createMap(); // Clear existing map and create a new map
+    createMap(); // Initialize the map
 
     getArtistEvents(apiKey, newArtistName)
-        .then(eventsJson => addMarkersAndPolyline(eventsJson))
-        .then(() => {
-            // Zoom out to show the entire USA if there are markers
-            if (markers.length > 0) {
-                var usaCenter = [39.8283, -98.5795]; // Approximate center of the contiguous USA
-                myMap.setView(usaCenter, 4); // Adjust the zoom level as needed
+        .then(eventsJson => {
+            if (eventsJson.length === 0) {
+                showNoEventsMessage(); // This should show the message for 2 seconds
+            } else {
+                // Handle adding markers and polyline
+                addMarkersAndPolyline(eventsJson).then(() => {
+                    // Adjust the map view
+                    if (markers.length > 0) {
+                        var usaCenter = [39.8283, -98.5795];
+                        myMap.setView(usaCenter, 4);
+                    }
+                });
             }
         })
-        .catch(error => console.error(error));
+        .catch(error => {
+            console.error(error);
+            showNoEventsMessage(); // Optionally show message on error as well
+        });
 }
+
+
 
 function clearMap() {
     if (myMap) {
@@ -101,6 +124,12 @@ function clearMap() {
         });
     }
 }
+
+function showNoEventsMessage() {
+    var messageDiv = document.getElementById('noEventsMessage');
+    messageDiv.style.display = 'block';
+  }
+  
 
 // Initialize the map when the page is loaded
 document.addEventListener('DOMContentLoaded', function () {

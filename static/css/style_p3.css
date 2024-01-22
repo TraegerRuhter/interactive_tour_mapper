@@ -2,26 +2,34 @@ body {
     background-color: #050505;
     width: device-width;
 }
+
 .jumbotron {
     padding: 10px;
     color: white;
     background-image: url(../image/concert.jpg);
+    margin: auto 5px;
     background-position: center;
     background-size: cover;
 }
+
 .jumbotron h1 {
-    position:relative;
-    top: -30px;
-    font-family: 'Bungee Shade';   
+    position: relative;
+    font-family: 'Bungee Shade';
+    font-size: 500%;
+    bottom: 1px;
+    color: #ffffff;
 }
+
 .jumbotron p {
-    position:relative;
-    top: 30px;
+    position: relative;
+    bottom: 1px;
     font-family: 'BioRhyme';
-    font-size: 18px;
+    font-size: 150%;
 }
-#map { 
-    width: 99%;
+
+#map {
+    width: 90%;
+    max-width: 1200px;
     height: 600px;
     background-color: #050505;
     margin: 5px auto;
@@ -30,7 +38,7 @@ body {
 }
 
 #tourDatesTable {
-    width: 70%;
+    width: 80%;
     max-width: 1000px;
     margin: 5px auto;
     background-color: #050505;
@@ -38,36 +46,111 @@ body {
     font-family: 'BioRhyme';
     font-size: 15px;
     border: 5px solid #a01e74;
-  }
-
-    #tourDatesTable th {
-        background-color: #a01e74;
-        color: #ffffff;
-        font-family: 'Bungee Shade';
-        font-size: 25px;
-        padding: 5px;
-        border: 1px solid #ffffff;
-    }
-  #tourDatesTable tr:nth-child(odd) {
-    background-color: #000000;
-  }
-
-  #tourDatesTable tr:nth-child(even) {
-    background-color: #4d4c4c;
-  }
-
-
-  
-/*.btn-primary {
-    background-color: #a01e74;
-    border-color: #050505;
-    }
-.btn-outline-secondary{
-    background-color: #050505;
-    border-color: #a01e74;
-    color: #fff;
 }
-.panel-primary {
-    width: device-width;
-    height: 40px;
-}*/
+
+#tourDatesTable th {
+    background-color: #a01e74;
+    color: #ffffff;
+    font-family: 'Bungee Shade';
+    font-size: 25px;
+    padding: 5px;
+    border: 1px solid #ffffff;
+}
+
+#tourDatesTable tr:nth-child(odd) {
+    background-color: #000000;
+}
+
+#tourDatesTable tr:nth-child(even) {
+    background-color: #4d4c4c;
+}
+
+
+
+/* Slide down animation for the failed search */
+@keyframes slideUpDown {
+    0% {
+        top: -50px;
+        opacity: 0;
+    }
+
+    10%,
+    90% {
+        /* Adjust percentages for timing */
+        top: 50px;
+        opacity: 1;
+    }
+
+    100% {
+        top: -50px;
+        opacity: 0;
+    }
+}
+
+.noEventsMessage {
+    display: none;
+    position: absolute;
+    color: white;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background-color: rgb(104, 30, 98);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    /* Add animation properties */
+    animation-name: slideUpDown;
+    animation-duration: 3s;
+    /* Total duration including pause */
+    animation-fill-mode: forwards;
+}
+
+
+/* search bar and button styling */
+
+.search-controls {
+    text-align: center;
+    margin: 5px auto;
+    width: 80%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.artist-input {
+    padding: 5px 50px;
+    text-align: center;
+    margin-right: 3px;
+    border: 2px solid #a01e74;
+    border-radius: 8px;
+}
+
+.search-btn,
+.reset-btn {
+    margin: auto 3px;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-btn {
+    background-color: #a01e74;
+    color: white;
+}
+
+.search-btn:hover {
+    background-color: #721754;
+}
+
+.reset-btn {
+    background-color: #2fb6df;
+    color: white;
+}
+
+.reset-btn:hover {
+    background-color: #275968;
+}
