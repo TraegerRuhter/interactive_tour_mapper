@@ -1,5 +1,5 @@
 # Tour Mapper
-## the_funky_bunch
+## By: the_funky_bunch
 
 ### Overview
 Tour Mapper is an interactive website designed for music enthusiasts to track the tour dates and venues of their favorite bands and artists.
