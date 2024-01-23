@@ -2,11 +2,9 @@
 ## the_funky_bunch
 
 ### Overview
-<br>
 Tour Mapper is an interactive website designed for music enthusiasts to track the tour dates and venues of their favorite bands and artists.
 
 ### Features
-<br>
 Artist Search: Users can search for specific artists to find their upcoming tour dates.<br>
 Interactive Map: Displays the locations of concerts and tours globally.<br>
 Event Details: Provides information such as date, venue, city, state, and country for each event.<br>
