@@ -39,9 +39,9 @@ Credit
 <br>
 Andres Erasto: https://github.com/AndresE99
 <br>
-Jamie Kawaguchi: https://github.com/JamieKawaguchi
-<br>
 Fae Matin: https://github.com/matin-fae
+<br>
+Jamie Kawaguchi: https://github.com/JamieKawaguchi
 <br>
 Traeger Ruhter: https://github.com/TraegerRuhter
 
