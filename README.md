@@ -11,18 +11,15 @@ Event Details: Provides information such as date, venue, city, state, and countr
 User-Friendly Interface: Easy navigation and search functionalities.
 
 ### Usage
-<br>
 Enter the artist's name in the search bar.
 View the map for tour locations and details.
 Click on a specific location for more information about that event.
 
 ### Purpose
-<br>
 This tool is ideal for fans wanting to stay updated on live performances and plan attendance at concerts of their favorite artists.
 *Note: Availability of data depends on the artist and tour schedule
 
 ### Resources
-<br>
 Layout: Bootstrap https://getbootstrap.com , Leaflet https://leafletjs.com 
 <br>
 Header: Photo by Vishnu R Nair: https://www.pexels.com/photo/people-at-concert-1105666/
@@ -34,7 +31,6 @@ Interactive Map: OpenStreetMap via Leaflet https://leafletjs.com
 APIs: https://www.jambase.com
 
 ### Credit 
-<br>
 Andres Erasto: https://github.com/AndresE99
 <br>
 Fae Matin: https://github.com/matin-fae
