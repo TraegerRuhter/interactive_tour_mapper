@@ -66,6 +66,19 @@ body {
     border: 5px solid #a01e74;
 }
 
+#tourDatesTable a {
+    color: #2fb6df;
+    font-family: 'BioRhyme';
+    font-size: inherit;
+    text-decoration: none;
+}
+
+#tourDatesTable a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+    color: #a01e74;
+}
+
 #tourDatesTable th {
     background-color: #a01e74;
     color: #ffffff;
@@ -80,7 +93,7 @@ body {
 }
 
 #tourDatesTable tr:nth-child(even) {
-    background-color: #4d4c4c;
+    background-color: #363636;
 }
 
 /* Slide down animation for the failed search */

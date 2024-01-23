@@ -111,7 +111,8 @@ function addMarkersAndPolyline(eventsJson) {
             const city = event.location.address.addressLocality ? event.location.address.addressLocality : "Not Available";
             const state = event.location.address.addressRegion.alternateName ? event.location.address.addressRegion.alternateName : "Not Available";
             const country = event.location.address.addressCountry.alternateName ? event.location.address.addressCountry.alternateName : "Not Available";
-
+            const siteURL = event.offers[1].url ? event.offers[1].url : "Not Available";
+            const seller_site = event.offers[1].seller.name ? event.offers[1].seller.name : "Not Available";
 
             const marker = L.marker([latitude, longitude]);
             markers.push(marker);
@@ -120,23 +121,27 @@ function addMarkersAndPolyline(eventsJson) {
             const performanceDate = event.performer[0]['x-performanceDate'];
 
             // Add a popup to the marker
-            var popupContent = '<div id="popups">' + 
+            var popupContent = '<div id="popups">' +
                 'Band: ' + name + '<br>' +
                 'Venue: ' + place.name + '<br>' +
+                'Tickets: <a href="' + siteURL + '" target="_blank">' + seller_site + '</a><br>' +
                 'City: ' + city + '<br>' +
                 'Date: ' + performanceDate +
                 '</div>';
+
             marker.bindPopup(popupContent).addTo(myMap);
 
 
 
             // Add a new row to the table for each event
+            // Add a new row to the table for each event
             let row = tableBody.insertRow();
             row.insertCell(0).innerText = performanceDate; // Date
-            row.insertCell(1).innerText = place.name; // Venue
+            row.insertCell(1).innerHTML = '<a href="' + siteURL + '" target="_blank">' + place.name + '</a>'; // Venue
             row.insertCell(2).innerText = city; // City
             row.insertCell(3).innerText = state; // State
             row.insertCell(4).innerText = country; // Country
+
         }
 
         // Create a polyline connecting markers
